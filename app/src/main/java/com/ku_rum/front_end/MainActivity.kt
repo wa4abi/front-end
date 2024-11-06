@@ -1,7 +1,7 @@
-package com.example.ku_rum_front_end
+package com.ku_rum.front_end
 
 import androidx.activity.OnBackPressedCallback
-import com.example.ku_rum_front_end.databinding.ActivityMainBinding
+import com.ku_rum.front_end.databinding.ActivityMainBinding
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 

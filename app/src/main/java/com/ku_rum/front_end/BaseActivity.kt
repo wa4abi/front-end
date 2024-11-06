@@ -1,6 +1,5 @@
-package com.example.ku_rum_front_end
+package com.ku_rum.front_end
 
-import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater

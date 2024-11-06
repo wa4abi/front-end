@@ -1,6 +1,5 @@
-package com.example.ku_rum_front_end.ui.theme
+package com.ku_rum.front_end.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

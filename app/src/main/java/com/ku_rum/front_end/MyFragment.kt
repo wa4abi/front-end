@@ -1,6 +1,6 @@
-package com.example.ku_rum_front_end
+package com.ku_rum.front_end
 
-import com.example.ku_rum_front_end.databinding.FragmentMyBinding
+import com.ku_rum.front_end.databinding.FragmentMyBinding
 
 class MyFragment : BaseFragment<FragmentMyBinding>(FragmentMyBinding::inflate){
     override fun initAfterBinding() {

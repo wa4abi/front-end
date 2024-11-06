@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ku_rum_front_end"
+    namespace = "com.ku_rum.front_end"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ku_rum_front_end"
+        applicationId = "com.ku_rum.front_end"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -72,7 +72,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    // kakao
+    implementation("com.kakao.sdk:v2-all:2.20.6")
+    implementation("com.kakao.maps.open:android:2.12.8")
+
 
 
 }

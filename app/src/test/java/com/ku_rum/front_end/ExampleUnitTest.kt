@@ -1,4 +1,4 @@
-package com.example.ku_rum_front_end
+package com.ku_rum.front_end
 
 import org.junit.Test
 
