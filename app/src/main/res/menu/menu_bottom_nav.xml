@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/announcement"
+        android:icon="@drawable/ic_nav_announcement"
+        android:title="공지사항"/>
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/ic_nav_map"
+        android:title="지도"/>
+    <item
+        android:id="@+id/reservation"
+        android:icon="@drawable/ic_nav_reservation"
+        android:title="예약"/>
+    <item
+        android:id="@+id/my"
+        android:icon="@drawable/ic_nav_my"
+        android:title="내정보"/>
+
+</menu>
