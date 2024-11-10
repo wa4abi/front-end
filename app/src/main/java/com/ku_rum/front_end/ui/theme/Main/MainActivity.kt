@@ -72,7 +72,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.main_frm,
-                            MapPointFragment()
+                            MapFragment()
                         )
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
