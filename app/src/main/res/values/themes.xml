@@ -6,4 +6,54 @@
     </style>
 
     <style name="Theme.KUrum_frontend" parent="Base.Theme.KUrum_frontend" />
+
+    <style name="Base.Theme.Ku_rum" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#009733</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.RoundedImageView" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.Ku_rum.RoundedRectangleButton" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="Widget.Ku_rum.RoundedRectangleButton" parent="ShapeAppearance.Ku_rum.RoundedRectangleButton">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ku_rum.RoundedRectangleButton</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.Ku_rum.RoundedRectangleButtonGray" parent="ShapeAppearance.Ku_rum.RoundedRectangleButton">
+        <item name='shapeAppearanceOverlay'>@style/ShapeAppearance.Ku_rum.RoundedRectangleButton</item>
+        <item name="backgroundTint">#EBEBEB</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ShapeAppearance.Ku_rum.RectangleButton" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+    <style name="Widget.Ku_rum.RectangleButton" parent="ShapeAppearance.Ku_rum.RectangleButton">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ku_rum.RectangleButton</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Widget.Ku_rum.RectangleButtonGreen" parent="ShapeAppearance.Ku_rum.RectangleButton">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ku_rum.RectangleButton</item>
+        <item name="backgroundTint">#4FB873</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="search_edit_text">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.RoundedImageView</item>
+        <item name="color">@color/grey</item>
+    </style>
 </resources>
