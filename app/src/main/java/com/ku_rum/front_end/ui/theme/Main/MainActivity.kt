@@ -1,7 +1,13 @@
-package com.ku_rum.front_end
+package com.ku_rum.front_end.ui.theme.Main
 
 import androidx.activity.OnBackPressedCallback
+import com.ku_rum.front_end.ui.theme.Announcement.AnnouncementFragment
+import com.ku_rum.front_end.BaseActivity
+import com.ku_rum.front_end.ui.theme.Map.MapFragment
+import com.ku_rum.front_end.R
+import com.ku_rum.front_end.ui.theme.Reservation.ReservationFragment
 import com.ku_rum.front_end.databinding.ActivityMainBinding
+import com.ku_rum.front_end.ui.theme.My.MyFragment
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -41,7 +47,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.main_frm,
+            .replace(
+                R.id.main_frm,
                 AnnouncementFragment()
             )
             .commitAllowingStateLoss()
@@ -53,7 +60,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.main_frm,
+                        .replace(
+                            R.id.main_frm,
                             AnnouncementFragment()
                         )
                         .commitAllowingStateLoss()
@@ -65,7 +73,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.main_frm,
+                        .replace(
+                            R.id.main_frm,
                             MapFragment()
                         )
                         .commitAllowingStateLoss()

@@ -10,4 +10,10 @@
     <color name="nav_unselected">#979797</color>
     <color name="nav_background_selected">#009733</color>
     <color name="transparent">#00000000</color>
+
+    <color name="basic_text">#1D2228</color>
+    <color name="dialog">#EBEBEB</color>
+    <color name="highlight_inform">#4FB873</color>
+    <color name="main">#009733</color>
+    <color name="grey">#9EAAB5</color>
 </resources>

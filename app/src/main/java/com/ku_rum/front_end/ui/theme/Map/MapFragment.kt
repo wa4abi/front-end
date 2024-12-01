@@ -1,9 +1,10 @@
-package com.ku_rum.front_end
+package com.ku_rum.front_end.ui.theme.Map
 
 import android.util.Log
 import com.kakao.vectormap.KakaoMap
 import com.kakao.vectormap.KakaoMapReadyCallback
 import com.kakao.vectormap.MapLifeCycleCallback
+import com.ku_rum.front_end.BaseFragment
 import com.ku_rum.front_end.databinding.FragmentMapBinding
 
 
