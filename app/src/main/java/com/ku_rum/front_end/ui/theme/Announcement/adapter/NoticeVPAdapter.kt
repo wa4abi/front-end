@@ -6,12 +6,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.ku_rum.Notice.NoticeListFragment
 
 class NoticeVPAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
+
     override fun getItemCount(): Int {
         return 6
     }
 
     override fun createFragment(position: Int): Fragment {
-        return NoticeListFragment()
+        return NoticeListFragment.newInstance(position)
     }
 
 }

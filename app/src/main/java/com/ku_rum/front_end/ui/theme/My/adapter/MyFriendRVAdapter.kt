@@ -1,10 +1,10 @@
 package com.example.ku_rum.MyPage.adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ku_rum.Dialog.DialogConfirmFragment
 import com.example.ku_rum.MyPage.data.FriendData
 import com.ku_rum.front_end.databinding.ItemMyFriendBinding
 
@@ -14,9 +14,8 @@ class MyFriendRVAdapter(val context: Context,
         fun bind(item:FriendData){
             binding.tvMyFriendName.text = item.name
             binding.ivMyFriendRemove.setOnClickListener{
-                // 확인 알림 띄우기
-                // 친구 삭제
-                // 검색 결과가 없을 때
+                // 확인 알림 띄우고 친구 삭제
+                showConfirmDialog(context, item)
             }
         }
     }
@@ -38,5 +37,22 @@ class MyFriendRVAdapter(val context: Context,
     fun update(newList:List<FriendData>){
         MyFriendList = newList
         notifyDataSetChanged()
+    }
+
+    fun showConfirmDialog(context: Context, item: FriendData) {
+        val builder = AlertDialog.Builder(context)
+        with(builder) {
+            setTitle("확인")
+            setMessage("삭제하시겠습니끼?")
+            setPositiveButton("확인") { dialog, which ->
+                val newList = MyFriendList.filterNot { it.id == item.id }
+                update(newList)
+            }
+            setNegativeButton("취소") {dialog, which ->
+                dialog.dismiss()
+            }
+        }
+        val dialog : AlertDialog = builder.create()
+        dialog.show()
     }
 }

@@ -1,44 +1,50 @@
 package com.example.ku_rum.MyPage
 
 import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import com.example.ku_rum.MyPage.adapter.MoreFriendRVAdapter
 import com.example.ku_rum.MyPage.data.FriendData
 import com.ku_rum.front_end.BaseFragment
+import com.ku_rum.front_end.R
 import com.ku_rum.front_end.databinding.FragmentMyMoreFriendBinding
+import com.ku_rum.front_end.ui.theme.My.MyMainFragment
 
 
 class MyMoreFriendFragment : BaseFragment<FragmentMyMoreFriendBinding>(FragmentMyMoreFriendBinding::inflate) {
 
     private lateinit var moreFriendRVAdapter: MoreFriendRVAdapter
-    private var friendList: List<FriendData> = listOf()
+    private var userList: List<FriendData> = listOf(
+        FriendData(0, "김쿠룸")
+    )
 
     override fun initAfterBinding() {
-    }
+        moreFriendRVAdapter = MoreFriendRVAdapter(requireActivity(), userList)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        binding.ivMyBack.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcv_my, MyMainFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
-        var binding = FragmentMyMoreFriendBinding.inflate(layoutInflater)
-        moreFriendRVAdapter = MoreFriendRVAdapter(requireActivity(), friendList)
+        val et = binding.etMoreFriend
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-        binding.etMoreFriend.setOnEditorActionListener { textView, i, keyEvent ->
+        et.setOnFocusChangeListener { view, hasFocus ->
+            if(hasFocus) {
+                imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+            } else {
+                imm.hideSoftInputFromWindow(view.windowToken, 0)
+            }
+        }
+
+        et.setOnEditorActionListener { textView, i, keyEvent ->
             if (i == EditorInfo.IME_ACTION_SEARCH) {
-                val imm =
-                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.etMoreFriend.windowToken, 0)
-                binding.etMoreFriend.clearFocus()
 
-                val searchQuery = binding.etMoreFriend.text.toString()
+                val searchQuery = et.text.toString()
 
-                val filteredFriend = friendList.filter { friend ->
+                val filteredFriend = userList.filter { friend ->
                     friend.name.contains(searchQuery, false)
                 }
                 moreFriendRVAdapter.update(filteredFriend)
@@ -48,7 +54,6 @@ class MyMoreFriendFragment : BaseFragment<FragmentMyMoreFriendBinding>(FragmentM
                 false
             }
         }
-
-        return binding.root
     }
+
 }

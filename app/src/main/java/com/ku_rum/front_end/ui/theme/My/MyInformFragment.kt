@@ -1,14 +1,11 @@
 package com.example.ku_rum.MyPage
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.ku_rum.MyPage.adapter.MyInformRVAdapter
 import com.example.ku_rum.MyPage.data.InformData
 import com.ku_rum.front_end.BaseFragment
+import com.ku_rum.front_end.R
 import com.ku_rum.front_end.databinding.FragmentMyInformBinding
-
+import com.ku_rum.front_end.ui.theme.My.MyMainFragment
 
 class MyInformFragment : BaseFragment<FragmentMyInformBinding>(FragmentMyInformBinding::inflate) {
 
@@ -16,19 +13,13 @@ class MyInformFragment : BaseFragment<FragmentMyInformBinding>(FragmentMyInformB
     private var informList: List<InformData> = listOf()
 
     override fun initAfterBinding() {
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        var binding = FragmentMyInformBinding.inflate(layoutInflater)
         myInformRVAdapter = MyInformRVAdapter(requireActivity(), informList)
-
-        // 알림 목록 불러오기
-
-        return binding.root
+        binding.ivMyBack.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcv_my, MyMainFragment())
+                .addToBackStack(null)
+                .commit()
+        }
     }
-
 }

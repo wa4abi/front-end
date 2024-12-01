@@ -1,43 +1,58 @@
 package com.example.ku_rum.MyPage
 
 import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ku_rum.Dialog.DialogConfirmFragment
 import com.example.ku_rum.MyPage.adapter.MyFriendRVAdapter
 import com.example.ku_rum.MyPage.data.FriendData
 import com.ku_rum.front_end.BaseFragment
+import com.ku_rum.front_end.ui.theme.My.MyMainFragment
+import com.ku_rum.front_end.R
 import com.ku_rum.front_end.databinding.FragmentMyFriendBinding
 
 
 class MyFriendFragment : BaseFragment<FragmentMyFriendBinding>(FragmentMyFriendBinding::inflate) {
 
     private lateinit var myFriendRVAdapter: MyFriendRVAdapter
-    private var myFriendList: List<FriendData> = listOf()
+    private var myFriendList: List<FriendData> = listOf(
+        FriendData(0,"Friend"),
+        FriendData(1,"김쿠룸"),
+        FriendData(2,"김쿠룸"),
+        FriendData(3,"김쿠룸"),
+        FriendData(4,"김쿠룸"),
+        FriendData(5,"김쿠룸")
+    )
 
     override fun initAfterBinding() {
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        var binding = FragmentMyFriendBinding.inflate(layoutInflater)
         myFriendRVAdapter = MyFriendRVAdapter(requireActivity(), myFriendList)
+        binding.rvMyFriend.adapter = myFriendRVAdapter
+        binding.rvMyFriend.layoutManager = LinearLayoutManager(requireActivity())
 
-        // 친구 목록 가져와야함
 
-        binding.etMyFriend.setOnEditorActionListener{ textView, i, keyEvent ->
+        binding.ivMyBack.setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcv_my, MyMainFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        val editText = binding.etMyFriend
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        editText.setOnFocusChangeListener { view, hasFocus ->
+            if(hasFocus){
+                imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+            } else {
+                imm.hideSoftInputFromWindow(view.windowToken, 0)
+            }
+        }
+
+        editText.setOnEditorActionListener{ textView, i, keyEvent ->
+
             if(i == EditorInfo.IME_ACTION_SEARCH){
-                val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.etMyFriend.windowToken, 0)
-                binding.etMyFriend.clearFocus()
-
-                val searchQuery = binding.etMyFriend.text.toString()
+                val searchQuery = editText.text.toString()
 
                 val filteredFriend = myFriendList.filter { friend ->
                     friend.name.contains(searchQuery, false)
@@ -50,8 +65,6 @@ class MyFriendFragment : BaseFragment<FragmentMyFriendBinding>(FragmentMyFriendB
                 false
             }
         }
-
-        return binding.root
     }
 
     private fun showDialog() {
