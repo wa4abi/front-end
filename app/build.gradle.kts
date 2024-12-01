@@ -84,7 +84,9 @@ dependencies {
 
     // kakao
     implementation("com.kakao.sdk:v2-all:2.20.6")
-    implementation("com.kakao.maps.open:android:2.12.8")
+
+    // 네이버 지도 SDK
+    implementation("com.naver.maps:map-sdk:3.19.1")
 
 
 

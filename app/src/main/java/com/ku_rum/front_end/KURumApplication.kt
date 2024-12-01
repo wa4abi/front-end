@@ -10,7 +10,7 @@ class KURumApplication : Application() {
         // 다른 초기화 코드들
 
         // Kakao SDK 초기화
-//        KakaoSdk.init(this, getString(R.string.KAKAO_NATIVE_APP_KEY))
-//        KakaoMapSdk.init(this, getString(R.string.KAKAO_NATIVE_APP_KEY))
+        KakaoSdk.init(this, getString(R.string.KAKAO_NATIVE_APP_KEY))
+        NaverMapSdk.getInstance(this).client = NaverCloudPlatformClient(getString(R.string.NAVER_NATIVE_APP_KEY))
     }
 }
