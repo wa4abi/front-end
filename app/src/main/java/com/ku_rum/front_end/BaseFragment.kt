@@ -21,9 +21,11 @@ abstract class BaseFragment<T: ViewBinding>(private val inflate: Inflate<T>): Fr
     ): View? {
         _binding = inflate.invoke(inflater, container, false)
 
+
         if (binding.root is ViewGroup){
             (binding.root as ViewGroup).clipToPadding = false
         }
+
         initAfterBinding()
         return binding.root
     }
@@ -39,4 +41,6 @@ abstract class BaseFragment<T: ViewBinding>(private val inflate: Inflate<T>): Fr
     fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
+
+
 }
