@@ -1,4 +1,4 @@
-package com.ku_rum.front_end.ui.theme.Announcement.adapter
+package com.example.ku_rum.Notice
 
 import android.content.Context
 import android.view.inputmethod.EditorInfo
@@ -8,8 +8,8 @@ import com.ku_rum.front_end.BaseFragment
 import com.ku_rum.front_end.databinding.FragmentAnnouncementSearchBinding
 import com.ku_rum.front_end.ui.theme.Announcement.data.NoticeData
 
-
 class AnnouncementSearchFragment : BaseFragment<FragmentAnnouncementSearchBinding>(FragmentAnnouncementSearchBinding::inflate) {
+
     private lateinit var noticeRVAdapter: NoticeRVAdapter
     private var noticeList: ArrayList<NoticeData> = arrayListOf()
     private var searchedList: ArrayList<NoticeData> = arrayListOf()
